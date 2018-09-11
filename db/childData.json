@@ -1,0 +1,34 @@
+
+[
+  {
+    "name": "Susie",
+    "age": 4,
+    "height": 3.6,
+    "weight": 60,
+    "diagnosis": [
+      {
+        "condition": "Chicken Pox"
+      },
+      {
+        "condition": "Allergies"
+      }
+    ],
+    "vaccinations": [
+      {
+        "vaccine": "Measles"
+      }
+    ]
+  },
+  {
+      "name": "Billy",
+      "age": 3,
+      "height": 3.0,
+      "weight": 51,
+      "diagnosis": [
+        {
+          "condition": "Sinus Infection"
+        }
+      ],
+      "vaccinations": []
+  }
+]
