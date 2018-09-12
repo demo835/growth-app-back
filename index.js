@@ -7,7 +7,7 @@ const app = express();
 
 app.use(cors());
 // // app.set("port", process.env.PORT || 3001);
-// app.use(parser.json());
+app.use(parser.json());
 
 // app.get("/", (req, res) => {
 //   res.redirect("Hello world");
@@ -73,6 +73,8 @@ app.put("/events/update/:id", (req, res) => {
 });
 
 app.put("/conditions/update/:id", (req, res) => {
+    console.log("hitting the right route")
+    console.log("req.body is", req.body)
     Child.findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(child => {
         res.json(child);
