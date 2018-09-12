@@ -1,0 +1,10 @@
+[
+    {
+        "firstName": "Alexa",
+        "lastName": "Amazon",
+        "password": "password1",
+        "email": "something@something.com",
+        "male": false,
+        "children": "Susie"
+    }
+]

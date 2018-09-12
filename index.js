@@ -1,7 +1,8 @@
 const express = require("express");
 const parser = require("body-parser");
 // const mongoose = require('./db/schema.js')
-const Child = require("./db/models/Child");
+const Child = require("./db/models/Child")
+const User = require("./db/models/User")
 const cors = require("cors");
 const app = express();
 
@@ -41,10 +42,46 @@ app.get("/conditions/new", (req, res) => {
   });
 
 
-app.post("/events/new", (req, res) => {
-  Event.create(req.body)
+app.post("/signup/new", (req, res) => {
+  console.log("hitting the right route /signup/new")
+  User.create(req.body)
+    .then(user => {
+      res.json(user);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+
+app.get("/users", (req, res) => {
+  User.find()
+    .then(users => {
+      res.json(users);
+      console.log(users)
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+
+app.delete("/user/delete", (req, res) => {
+  console.log("HITTING DELETE ON BACK END")
+  User.findByIdAndDelete(req.body)
     .then(event => {
-      res.json(event);
+      // res.json(event);
+      res.redirect("/")
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+
+app.delete("/user/delete/:id", (req, res) => {
+  console.log("HITTING DELETE ON BACK END")
+  User.findOneAndRemove({ _id: req.params.id }, req.body)
+    .then(event => {
+      // res.json(event);
+      res.redirect("/")
     })
     .catch(err => {
       console.log(err);
@@ -90,10 +127,10 @@ app.get("/", (req, res) => {
   res.send("Hello world")
 })
 
-app.get("/venues", (req, res) => {
-  Venue.find({})
-    .then(venues => {
-      res.json(venues);
+app.get("/user", (req, res) => {
+  User.find({})
+    .then(user => {
+      res.json(user);
     })
     .catch(err => {
       console.log(err);
