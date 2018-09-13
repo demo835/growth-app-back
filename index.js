@@ -89,27 +89,6 @@ app.delete("/user/delete/:id", (req, res) => {
     });
 });
 
-app.delete("/events/delete/:id", (req, res) => {
-  Event.findOneAndRemove({ _id: req.params.id }, req.body)
-    .then(event => {
-      // res.json(event);
-      res.redirect("/")
-    })
-    .catch(err => {
-      console.log(err);
-    });
-});
-
-app.put("/events/update/:id", (req, res) => {
-  Event.findOneAndUpdate({ _id: req.params.id }, req.body)
-    .then(event => {
-      res.json(event);
-    })
-    .catch(err => {
-      console.log(err);
-    });
-});
-
 app.put("/conditions/update/:id", (req, res) => {
     console.log("hitting the right route")
     console.log("req.body is", req.body)
@@ -132,26 +111,6 @@ app.get("/user", (req, res) => {
   User.find({})
     .then(user => {
       res.json(user);
-    })
-    .catch(err => {
-      console.log(err);
-    });
-});
-
-app.get("/venues/:id", (req, res) => {
-  Venue.findOne({ _id: req.params.id })
-    .then(venue => {
-      res.json(venue);
-    })
-    .catch(err => {
-      console.log(err);
-    });
-});
-
-app.post("/venues/new", (req, res) => {
-  Venue.create(req.body)
-    .then(venue => {
-      res.json(venue);
     })
     .catch(err => {
       console.log(err);
