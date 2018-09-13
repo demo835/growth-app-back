@@ -21,6 +21,7 @@ app.get("/patients", (req, res) => {
     .then(child => {
       res.json(child);
       console.log(child)
+      console.log(process.env.MONGO_ATLAS_PW)
     })
     .catch(err => {
       console.log(err);
