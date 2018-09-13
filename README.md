@@ -8,6 +8,6 @@ From the home page, click Create Account. Enter your information and click Regis
 This application is a full-stack MERN app, structured in the rMVC framework. It implements Node.js and Express.js on the backend, React.js for Views, MongoDB and Mongoose for databases. Code was written in Javascript, website appearance was coded with Materialize, CSS, and HTML.
 
 ## Models
-There are two models: Script and Article. The Script model contains an outline of the article which the user will read. Data contained in the Article model will be substituted into the Script model, and presented to the user as a news article.
+There are two models: User and Patient. The User model is structured for the parent. Patient model is structured for your child.
 
 Frontend is available here: https://github.com/demo835/growth-app
