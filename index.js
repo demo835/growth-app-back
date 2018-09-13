@@ -53,7 +53,7 @@ app.post("/signup/new", (req, res) => {
     });
 });
 
-app.get("/users", (req, res) => {
+app.get("/user", (req, res) => {
   User.find()
     .then(users => {
       res.json(users);
