@@ -69,7 +69,7 @@ app.delete("/user/delete", (req, res) => {
   User.findByIdAndDelete(req.body)
     .then(event => {
       // res.json(event);
-      res.redirect("/")
+      // res.redirect("/")
     })
     .catch(err => {
       console.log(err);
@@ -81,7 +81,7 @@ app.delete("/user/delete/:id", (req, res) => {
   User.findOneAndRemove({ _id: req.params.id }, req.body)
     .then(event => {
       // res.json(event);
-      res.redirect("/")
+      // res.redirect("/")
     })
     .catch(err => {
       console.log(err);
