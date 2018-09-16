@@ -1,18 +1,13 @@
 const express = require("express");
 const parser = require("body-parser");
-// const mongoose = require('./db/schema.js')
 const Child = require("./db/models/Child")
 const User = require("./db/models/User")
 const cors = require("cors");
 const app = express();
 
 app.use(cors());
-// // app.set("port", process.env.PORT || 3001);
 app.use(parser.json());
 
-// app.get("/", (req, res) => {
-//   res.redirect("Hello world");
-// });
 
 // Child Controllers and Routes
 
@@ -65,6 +60,16 @@ app.get("/user", (req, res) => {
     });
 });
 
+app.get("/user", (req, res) => {
+  User.find({})
+    .then(user => {
+      res.json(user);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+
 app.delete("/user/delete", (req, res) => {
   console.log("HITTING DELETE ON BACK END")
   User.findByIdAndDelete(req.body)
@@ -107,19 +112,9 @@ app.get("/", (req, res) => {
   res.send("Hello world")
 })
 
-app.get("/user", (req, res) => {
-  User.find({})
-    .then(user => {
-      res.json(user);
-    })
-    .catch(err => {
-      console.log(err);
-    });
-});
-
-// app.listen(app.get("port"), () => {
-//   console.log("Locked and loaded on " + app.get("port"));
-// });
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'index.html'))
+})
 
 app.set('port', process.env.PORT || 3001)
 
